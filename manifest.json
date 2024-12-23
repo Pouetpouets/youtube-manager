@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "manifest_version": 3,
   "name": "YouTube Watch Later Manager",
@@ -12,3 +13,6 @@
     }
   ]
 }
+=======
+{"manifest_version": 3,"name": "YouTube Watch Later Manager","version": "1.0","description": "Bulk manage videos in YouTube Watch Later playlist","permissions": ["activeTab"],"content_scripts": [{"matches": ["*://www.youtube.com/playlist?list=WL"],"js": ["content.js"],"css": ["styles.css"]}]}
+>>>>>>> f5df7edcc6f87cd179848f20b21914a84b46f161
