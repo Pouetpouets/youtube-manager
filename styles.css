@@ -3,6 +3,9 @@
   background: #f9f9f9;
   border-radius: 8px;
   margin: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .select-all-btn {
@@ -27,4 +30,6 @@
 .video-checkbox {
   margin-right: 8px;
   cursor: pointer;
+  width: 20px;
+  height: 20px;
 }

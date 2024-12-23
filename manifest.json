@@ -3,12 +3,18 @@
   "name": "YouTube Watch Later Manager",
   "version": "1.0",
   "description": "Bulk manage videos in YouTube Watch Later playlist",
-  "permissions": ["activeTab"],
+  "permissions": [
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*"
+  ],
   "content_scripts": [
     {
-      "matches": ["*://www.youtube.com/playlist?list=WL"],
+      "matches": ["*://*.youtube.com/*"],
       "js": ["content.js"],
-      "css": ["styles.css"]
+      "css": ["styles.css"],
+      "run_at": "document_end"
     }
   ]
 }
