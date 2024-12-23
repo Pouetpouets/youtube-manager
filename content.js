@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-// The content of content.js from above
-=======
 function initBulkManager() {
     // Create bulk actions container
     const bulkActionsContainer = document.createElement('div');
@@ -94,4 +91,3 @@ function initBulkManager() {
   } else {
     initBulkManager();
   }
->>>>>>> f5df7edcc6f87cd179848f20b21914a84b46f161
