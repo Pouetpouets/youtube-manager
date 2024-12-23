@@ -1,0 +1,30 @@
+.bulk-actions-container {
+    padding: 16px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    margin: 16px;
+  }
+  
+  .select-all-btn {
+    background: #065fd4;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  
+  .delete-selected-btn {
+    background: #cc0000;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .video-checkbox {
+    margin-right: 8px;
+    cursor: pointer;
+  }
