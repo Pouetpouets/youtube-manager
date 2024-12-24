@@ -6,7 +6,14 @@ function isSubscriptionsPage() {
     return window.location.href.includes('/feed/channels');
 }
 
+function ensureSingleControlPanel() {
+    // Remove any existing control panels
+    const existingPanels = document.querySelectorAll('.wl-control-panel');
+    existingPanels.forEach(panel => panel.remove());
+}
+
 function addWatchLaterControls() {
+    ensureSingleControlPanel();
     // Create control panel
     const controlPanel = document.createElement('div');
     controlPanel.className = 'wl-control-panel';
@@ -104,6 +111,7 @@ function addWatchLaterControls() {
 }
 
 function addSubscriptionControls() {
+    ensureSingleControlPanel();
     console.log('Adding subscription controls');
     
     // Create control panel
@@ -196,6 +204,7 @@ function addSubscriptionControls() {
 
 // Initialize based on page type
 function initializeControls() {
+    ensureSingleControlPanel();
     if (isWatchLaterPage()) {
         addWatchLaterControls();
     } else if (isSubscriptionsPage()) {
@@ -204,12 +213,21 @@ function initializeControls() {
 }
 
 // Initial load
+let initAttempts = 0;
+const maxAttempts = 10;
 const interval = setInterval(() => {
     if (document.querySelector('#primary')) {
         initializeControls();
         clearInterval(interval);
     }
+    initAttempts++;
+    if (initAttempts >= maxAttempts) {
+        clearInterval(interval);
+    }
 }, 1000);
 
 // Handle navigation
-window.addEventListener('yt-navigate-finish', initializeControls);
+window.addEventListener('yt-navigate-finish', () => {
+    // Small delay to ensure DOM is ready
+    setTimeout(initializeControls, 1000);
+});
