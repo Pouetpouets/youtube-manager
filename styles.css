@@ -6,7 +6,7 @@
   display: flex;
   gap: 16px;
   position: relative;
-  z-index: 9999;  /* Ensure it's on top of other elements */
+  z-index: 9999;
 }
 
 .wl-btn {
@@ -16,7 +16,7 @@
   cursor: pointer;
   font-weight: 500;
   position: relative;
-  z-index: 10000;  /* Even higher z-index for buttons */
+  z-index: 10000;
 }
 
 .wl-btn.select-all {
@@ -27,4 +27,13 @@
 .wl-btn.delete-selected {
   background: #cc0000;
   color: white;
+}
+
+.video-checkbox {
+  margin: 10px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  position: relative;
+  z-index: 9999;
 }
