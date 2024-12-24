@@ -1,14 +1,17 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Watch Later Manager",
+  "name": "YouTube Manager",
   "version": "1.0",
-  "description": "Bulk manage videos in YouTube Watch Later playlist",
+  "description": "Manage YouTube Watch Later playlist and Subscriptions",
   "action": {
-    "default_title": "YouTube Watch Later Manager"
+    "default_title": "YouTube Manager"
   },
   "content_scripts": [
     {
-      "matches": ["https://www.youtube.com/playlist*"],
+      "matches": [
+        "https://www.youtube.com/playlist*",
+        "https://www.youtube.com/feed/channels*"
+      ],
       "js": ["content.js"],
       "css": ["styles.css"]
     }

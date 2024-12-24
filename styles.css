@@ -1,39 +1,48 @@
 .wl-control-panel {
-  padding: 16px;
-  background: #f9f9f9;
-  margin: 16px;
-  border-radius: 8px;
-  display: flex;
-  gap: 16px;
-  position: relative;
-  z-index: 9999;
+    padding: 16px;
+    background: #f9f9f9;
+    margin: 16px;
+    border-radius: 8px;
+    display: flex;
+    gap: 16px;
+    position: relative;
+    z-index: 9999;
 }
 
 .wl-btn {
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  position: relative;
-  z-index: 10000;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    z-index: 10000;
+    min-width: 150px;
+    height: 40px;
 }
 
 .wl-btn.select-all {
-  background: #065fd4;
-  color: white;
+    background: #065fd4;
+    color: white;
 }
 
 .wl-btn.delete-selected {
-  background: #cc0000;
-  color: white;
+    background: #cc0000;
+    color: white;
 }
 
-.video-checkbox {
-  margin: 10px;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  position: relative;
-  z-index: 9999;
+.video-checkbox,
+.subscription-checkbox {
+    margin: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+    z-index: 9999;
+}
+
+.subscription-checkbox {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
