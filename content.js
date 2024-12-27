@@ -189,11 +189,20 @@ function addSubscriptionControls() {
     // Change: Insert the control panel at the top of the page content
     const pageManager = document.querySelector('ytd-page-manager');
     if (pageManager) {
-        const header = pageManager.querySelector('ytd-browse[page-subtype="subscriptions"] #primary');        if (header) {
+        // Updated selector to find the correct container
+        const header = pageManager.querySelector('#contents.ytd-section-list-renderer');
+        if (header) {
             header.insertBefore(controlPanel, header.firstChild);
             console.log('[DEBUG] Added control panel to page header');
         } else {
-            console.log('[DEBUG] Could not find page header');
+            // Try alternative selector
+            const alternativeHeader = pageManager.querySelector('ytd-rich-grid-renderer');
+            if (alternativeHeader) {
+                alternativeHeader.insertBefore(controlPanel, alternativeHeader.firstChild);
+                console.log('[DEBUG] Added control panel using alternative selector');
+            } else {
+                console.log('[DEBUG] Could not find page header');
+            }
         }
     }
 
