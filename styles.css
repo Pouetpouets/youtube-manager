@@ -1,15 +1,12 @@
 .wl-control-panel {
-    padding: 12px;
-    background: var(--yt-spec-brand-background-primary, #fff);
-    margin: 12px;
-    border-radius: 10px;
+    padding: 16px;
+    background: #f9f9f9;
+    margin: 16px;
+    border-radius: 8px;
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     position: relative;
     z-index: 9999;
-    width: calc(100% - 24px);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .wl-btn {
@@ -20,7 +17,7 @@
     font-weight: 500;
     position: relative;
     z-index: 10000;
-    width: 100%;
+    min-width: 150px;
     height: 36px;
     margin: 4px 0;
 }
@@ -35,13 +32,36 @@
     color: white;
 }
 
+.subscription-checkbox-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+}
+
 .subscription-checkbox {
-    margin: 10px;
     width: 20px;
     height: 20px;
     cursor: pointer;
+    margin: 0;
+    opacity: 0.7;
+    transition: opacity 0.2s;
     position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 10000;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#content-section {
+    position: relative;
+}
+
+.subscription-checkbox:hover,
+.subscription-checkbox:checked {
+    opacity: 1;
+}
+
+/* Adjust spacing for the channel container */
+#channel-thumbnail-container {
+    margin-left: 30px; /* Make space for the checkbox */
 }
