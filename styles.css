@@ -1,25 +1,34 @@
+/* Control panel styling */
 .wl-control-panel {
     padding: 16px;
-    background: #f9f9f9;
-    margin: 16px;
+    background: var(--yt-spec-brand-background-primary, #fff);
+    margin: 0 0 16px 0;
     border-radius: 8px;
     display: flex;
     gap: 16px;
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 9999;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: flex-start;
 }
 
+/* Button styling */
 .wl-btn {
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 0 16px;
+    height: 36px;
+    border-radius: 18px;
     border: none;
     cursor: pointer;
     font-weight: 500;
-    position: relative;
-    z-index: 10000;
-    min-width: 150px;
-    height: 36px;
-    margin: 4px 0;
+    font-size: 14px;
+    font-family: Roboto, Arial, sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+    min-width: 120px;
 }
 
 .wl-btn.select-all {
@@ -27,11 +36,20 @@
     color: white;
 }
 
+.wl-btn.select-all:hover {
+    background: #0056c7;
+}
+
 .wl-btn.delete-selected {
     background: #cc0000;
     color: white;
 }
 
+.wl-btn.delete-selected:hover {
+    background: #b00000;
+}
+
+/* Keep existing checkbox styles */
 .subscription-checkbox-container {
     position: relative;
     display: flex;
@@ -61,7 +79,6 @@
     opacity: 1;
 }
 
-/* Adjust spacing for the channel container */
 #channel-thumbnail-container {
-    margin-left: 30px; /* Make space for the checkbox */
+    margin-left: 30px;
 }
