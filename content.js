@@ -58,7 +58,7 @@ function addSubscriptionControls() {
                         subscribeButton.click();
                         await new Promise(r => setTimeout(r, 1500));
                         
-                        const unsubscribeButton = document.querySelector('button.yt-spec-button-shape-next--call-to-action[aria-label="Se désabonner"]');
+                        const unsubscribeButton = document.querySelector('button.yt-spec-button-shape-next--call-to-action[aria-label="Se d\u00e9sabonner"]');
                         console.log('[DEBUG] Found unsubscribe button:', unsubscribeButton);
                         
                         if (unsubscribeButton) {
@@ -90,9 +90,15 @@ function addSubscriptionControls() {
     controlPanel.appendChild(selectAllBtn);
     controlPanel.appendChild(unsubscribeBtn);
 
-    const guideSection = document.querySelector('ytd-guide-section-renderer');
-    if (guideSection) {
-        guideSection.insertBefore(controlPanel, guideSection.firstChild);
+    // Change: Insert the control panel at the top of the page content
+    const pageManager = document.querySelector('ytd-page-manager');
+    if (pageManager) {
+        const header = pageManager.querySelector('ytd-browse[page-subtype="subscriptions"] #primary');        if (header) {
+            header.insertBefore(controlPanel, header.firstChild);
+            console.log('[DEBUG] Added control panel to page header');
+        } else {
+            console.log('[DEBUG] Could not find page header');
+        }
     }
 
     function addCheckboxesToChannels() {
