@@ -1,0 +1,14 @@
+/* Watch Later video checkbox styling */
+.video-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 10px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.video-checkbox:hover,
+.video-checkbox:checked {
+    opacity: 1;
+}
