@@ -34,33 +34,46 @@ YTManager.subscriptions = {
 
                 for (const checkbox of selectedChannels) {
                     try {
-                        const channelItem = checkbox.closest('#content-section');
-                        const channelName = channelItem?.querySelector('.ytd-channel-name')?.textContent;
+                        // Updated selector to find the correct channel item container
+                        const channelItem = checkbox.closest('ytd-channel-renderer, ytd-grid-channel-renderer');
+                        if (!channelItem) {
+                            console.log('[DEBUG] Could not find channel item');
+                            continue;
+                        }
+
+                        const channelName = channelItem.querySelector('ytd-channel-name').textContent;
                         console.log('[DEBUG] Processing channel:', channelName);
                         
+                        // Click the subscribed button to show the unsubscribe dialog
                         const subscribeButton = channelItem.querySelector('ytd-subscribe-button-renderer button');
                         if (subscribeButton) {
+                            console.log('[DEBUG] Clicking subscribe button');
                             subscribeButton.click();
                             await new Promise(r => setTimeout(r, 1500));
                             
-                            const unsubscribeButton = document.querySelector('button.yt-spec-button-shape-next--call-to-action[aria-label="Se désabonner"]');
-                            console.log('[DEBUG] Found unsubscribe button:', unsubscribeButton);
+                            // Find and click the unsubscribe button in the dialog
+                            const confirmDialog = document.querySelector('yt-confirm-dialog-renderer');
+                            const confirmButton = confirmDialog?.querySelector('#confirm-button button');
+                            console.log('[DEBUG] Found unsubscribe confirmation button:', confirmButton);
                             
-                            if (unsubscribeButton) {
-                                unsubscribeButton.click();
+                            if (confirmButton) {
+                                confirmButton.click();
                                 successCount++;
+                                console.log('[DEBUG] Successfully unsubscribed from:', channelName);
+                                // Wait longer to ensure unsubscribe completes
                                 await new Promise(r => setTimeout(r, 2000));
                             } else {
-                                console.log('[DEBUG] Unsubscribe button not found in dialog');
+                                console.log('[DEBUG] Unsubscribe confirmation button not found');
                             }
                         } else {
-                            console.log('[DEBUG] Subscribe button not found for channel');
+                            console.log('[DEBUG] Subscribe button not found for channel:', channelName);
                         }
                     } catch (error) {
                         console.error('[DEBUG] Error processing channel:', error);
                     }
                 }
 
+                console.log(`[DEBUG] Unsubscribe process completed. Success count: ${successCount}`);
                 if (successCount > 0) {
                     alert(`Successfully unsubscribed from ${successCount} channels. Page will refresh.`);
                     window.location.reload();
@@ -76,21 +89,16 @@ YTManager.subscriptions = {
         // Insert panel into page header
         const pageManager = document.querySelector('ytd-page-manager');
         if (pageManager) {
-            const header = pageManager.querySelector('#contents.ytd-section-list-renderer');
+            const header = pageManager.querySelector('#contents');
             if (header) {
                 header.insertBefore(controlPanel, header.firstChild);
                 console.log('[DEBUG] Added control panel to page header');
-            } else {
-                const alternativeHeader = pageManager.querySelector('ytd-rich-grid-renderer');
-                if (alternativeHeader) {
-                    alternativeHeader.insertBefore(controlPanel, alternativeHeader.firstChild);
-                    console.log('[DEBUG] Added control panel using alternative selector');
-                }
             }
         }
 
         function addCheckboxesToChannels() {
-            const channelItems = document.querySelectorAll('#content-section');
+            // Updated selector to find channels in both list and grid views
+            const channelItems = document.querySelectorAll('ytd-channel-renderer, ytd-grid-channel-renderer');
             channelItems.forEach(item => {
                 if (!item.querySelector('.subscription-checkbox')) {
                     const checkbox = document.createElement('input');
@@ -101,10 +109,13 @@ YTManager.subscriptions = {
                     checkboxContainer.className = 'subscription-checkbox-container';
                     checkboxContainer.appendChild(checkbox);
 
-                    const avatarContainer = item.querySelector('#channel-thumbnail-container');
+                    // Updated selector for the avatar container
+                    const avatarContainer = item.querySelector('#avatar-link');
                     if (avatarContainer) {
                         avatarContainer.parentElement.insertBefore(checkboxContainer, avatarContainer);
                         console.log('[DEBUG] Added checkbox to channel');
+                    } else {
+                        console.log('[DEBUG] Could not find avatar container');
                     }
                 }
             });
@@ -114,7 +125,7 @@ YTManager.subscriptions = {
             addCheckboxesToChannels();
         });
 
-        const container = document.querySelector('#content');
+        const container = document.querySelector('#contents');
         if (container) {
             observer.observe(container, {
                 childList: true,
