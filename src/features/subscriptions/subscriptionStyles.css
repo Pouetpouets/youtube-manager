@@ -17,9 +17,10 @@
     left: -30px;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1000;
 }
 
-#content-section {
+ytd-channel-renderer, ytd-grid-channel-renderer {
     position: relative;
 }
 
@@ -28,6 +29,6 @@
     opacity: 1;
 }
 
-#channel-thumbnail-container {
+#avatar-link {
     margin-left: 30px;
 }
