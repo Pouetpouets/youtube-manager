@@ -3,17 +3,24 @@
   "name": "YouTube Manager",
   "version": "1.0",
   "description": "Manage YouTube Watch Later playlist and Subscriptions",
-  "action": {
-    "default_title": "YouTube Manager"
-  },
+  "permissions": ["activeTab"],
   "content_scripts": [
     {
       "matches": [
         "https://www.youtube.com/playlist*",
         "https://www.youtube.com/feed/channels*"
       ],
-      "js": ["content.js"],
-      "css": ["styles.css"]
+      "js": [
+        "src/utils/common.js",
+        "src/features/watchLater/watchLaterControls.js",
+        "src/features/subscriptions/subscriptionControls.js",
+        "src/content.js"
+      ],
+      "css": [
+        "src/features/watchLater/watchLaterStyles.css",
+        "src/features/subscriptions/subscriptionStyles.css"
+      ],
+      "type": "module"
     }
   ]
 }
