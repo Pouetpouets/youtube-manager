@@ -21,12 +21,6 @@
         "src/features/subscriptions/channelManager.js",
         "src/features/subscriptions/subscriptionControls.js",
         "src/content.js"
-      ],
-      "css": [
-        "src/utils/common.css",
-        "src/features/watchLater/watchLaterStyles.css",
-        "src/features/subscriptions/subscriptionStyles.css"
-      ]
-    }
+      ]    }
   ]
 }
