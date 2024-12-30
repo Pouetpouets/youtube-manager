@@ -16,6 +16,9 @@
         "src/features/watchLater/ui.js",
         "src/features/watchLater/videoManager.js",
         "src/features/watchLater/watchLaterControls.js",
+        "src/features/subscriptions/constants.js",
+        "src/features/subscriptions/ui.js",
+        "src/features/subscriptions/channelManager.js",
         "src/features/subscriptions/subscriptionControls.js",
         "src/content.js"
       ],
