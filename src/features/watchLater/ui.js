@@ -1,21 +1,24 @@
-import { CLASSES } from './constants';
+window.YTManager = window.YTManager || {};
+YTManager.watchLater = YTManager.watchLater || {};
 
-export function createControlPanel() {
-    const panel = document.createElement('div');
-    panel.className = CLASSES.CONTROL_PANEL;
-    return panel;
-}
+YTManager.watchLater.ui = {
+    createControlPanel: function() {
+        const panel = document.createElement('div');
+        panel.className = YTManager.watchLater.constants.CLASSES.CONTROL_PANEL;
+        return panel;
+    },
 
-export function createButton(text, type) {
-    const button = document.createElement('button');
-    button.textContent = text;
-    button.className = `${CLASSES.BUTTON.BASE} ${type}`;
-    return button;
-}
+    createButton: function(text, type) {
+        const button = document.createElement('button');
+        button.textContent = text;
+        button.className = `${YTManager.watchLater.constants.CLASSES.BUTTON.BASE} ${type}`;
+        return button;
+    },
 
-export function createCheckbox() {
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.className = CLASSES.VIDEO_CHECKBOX;
-    return checkbox;
-}
+    createCheckbox: function() {
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = YTManager.watchLater.constants.CLASSES.VIDEO_CHECKBOX;
+        return checkbox;
+    }
+};
