@@ -1,13 +1,12 @@
 # YouTube Manager Extension
 
-A Chrome extension to manage YouTube Watch Later playlist and Subscriptions.
+A Chrome extension to add feature to YouTube 
 
 ## Features
 
 - Bulk manage Watch Later playlist videos
 - Bulk manage channel subscriptions
 - Select all/deselect all functionality
-- Proper display based on current page
 
 ## Installation
 
