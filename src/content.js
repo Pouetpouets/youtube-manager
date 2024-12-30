@@ -1,9 +1,9 @@
 (function() {
     function initializeControls() {
         if (YTManager.utils.isWatchLaterPage()) {
-            YTManager.watchLater.initializeWatchLater();
+            YTManager.watchLater.controls.initialize();
         } else if (YTManager.utils.isSubscriptionsPage()) {
-            YTManager.subscriptions.initializeSubscriptions();
+            YTManager.subscriptions.controls.initialize();
         }
     }
 
