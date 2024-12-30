@@ -21,6 +21,8 @@
         "src/features/subscriptions/channelManager.js",
         "src/features/subscriptions/subscriptionControls.js",
         "src/content.js"
-      ]    }
+      ],
+      "css": ["styles.css"]
+    }
   ]
 }
