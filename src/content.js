@@ -3,7 +3,7 @@
         if (YTManager.utils.isWatchLaterPage()) {
             YTManager.watchLater.initializeWatchLater();
         } else if (YTManager.utils.isSubscriptionsPage()) {
-            YTManager.subscriptions.addSubscriptionControls();
+            YTManager.subscriptions.initializeSubscriptions();
         }
     }
 
