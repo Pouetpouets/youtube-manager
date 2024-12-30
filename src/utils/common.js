@@ -6,10 +6,13 @@ window.YTManager = {
         },
         
         isSubscriptionsPage: function() {
-            return window.location.href.includes('/feed/channels');
+            console.log('[DEBUG] Checking Subscriptions page');
+            return window.location.href.includes('/feed/channels') || 
+                   window.location.pathname === '/feed/subscriptions';
         },
         
         ensureSingleControlPanel: function() {
+            console.log('[DEBUG] Removing existing control panels');
             const existingPanels = document.querySelectorAll('.wl-control-panel');
             existingPanels.forEach(panel => panel.remove());
         }
